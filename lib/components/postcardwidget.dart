@@ -7,6 +7,7 @@ class PostCard extends StatelessWidget {
   final String postimageurl;
   final String profileimageurl;
   final String profilename;
+  final String caption;
   int likes;
   final String id;
 
@@ -16,6 +17,7 @@ class PostCard extends StatelessWidget {
     this.postimageurl,
     this.likes,
     this.id,
+    this.caption,
   });
 
   
@@ -31,24 +33,30 @@ class PostCard extends StatelessWidget {
   print("POST req response ${statusCode}");
   
   }
+  
+  
 
   final String profiledefault =
       'https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png';
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return/*  Container(
         color: (Theme.of(context).brightness != Brightness.dark)
             ? Colors.white
             : Colors.black,
-        elevation: 0.2,
-        
-        child: Column(
+        //elevation: 0.0, */
+      
+        //child:\
+        Column(
+          
+          
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 8.0, 16.0),
+                padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -84,20 +92,17 @@ class PostCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Flexible(
-                fit: FlexFit.tight,
-                child: (postimageurl != null)
-                    ? Image.network(
+              
+                Container(
+                 // height: 250,
+                  child:                    Image.network(
                         postimageurl,
-                        //fit: BoxFit.cover,
-                      )
-                    : SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Icon(Icons.error_outline)),
-              ),
+                        fit: BoxFit.contain,
+                      ),
+                ),      
+              
               Padding(
-                padding: const EdgeInsets.all(1.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -134,7 +139,14 @@ class PostCard extends StatelessWidget {
                 ),
               ),
             Text("  Liked by ${likes} users"),
-
-            ]));
+            SizedBox(height: 10,),
+            Text("  @${profilename} - \t\t${caption}"),
+            Divider(
+                height: 30,
+               
+              ),
+            ]
+            //)
+            );
   }
 }

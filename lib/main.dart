@@ -1,3 +1,4 @@
+import 'package:Instaclone/components/createPost.dart';
 import 'package:flutter/material.dart';
 import 'components/activitypage.dart';
 import 'components/mainfeed.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'InstaClone',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       darkTheme:
           ThemeData(brightness: Brightness.dark, primarySwatch: Colors.orange),
@@ -43,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _pageOptions = [
       MyFeedPage(),
-      MyFeedPage(),
+      SearchPage(),
+      CreatePost(),
       MyActivityPage(),
       LoginPage(),
     ];
@@ -68,25 +70,25 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
             
               icon: Icon(Icons.home,color:dynamiciconcolor),
-              title: Text(""),
+              title: Text("Home"),
               
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search,color:dynamiciconcolor),
-              title: Text(""),
+              title: Text("Search"),
             ),
-            /*BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: Icon(Icons.add_box),
-              
-            ),*/
+              title:Text("Add post")  
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite,color:dynamiciconcolor ,),
              
-              title: Text(""),
+              title: Text("Activity"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_box,color:dynamiciconcolor),
-              title: Text(""),
+              title: Text("Login"),
             )
           ],
         onTap: (index){
